@@ -77,24 +77,32 @@
         color: #555;
         pointer-events: none; /* NEVER CLICKABLE */
       }
+
+      .note {
+        margin-top: 22px;
+        font-size: 14px;
+        color: #999;
+      }
     </style>
   </head>
   <body>
     <div class="card" id="card">
-      <div class="emoji">🐼💗</div>
+      <div class="emoji">🐣💗</div>
       <p style="font-size:18px; margin-bottom:30px;">For Gehna 💕</p>
       <h1>Gehna, will you be my Valentine?</h1>
 
-      <img
-        id="loveGif"
-        src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXB2bjFvN3lqMm1wZDdka3ppeXBnM3FuNGhwcWZqaDM0dXJqZXM3bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11sBLVxNs7v6WA/giphy.gif"
-        style="display:none; margin:20px auto; width:260px; border-radius:20px;"
-      />
+<img
+  id="loveGif"
+  src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXB2bjFvN3lqMm1wZDdka3ppeXBnM3FuNGhwcWZqaDM0dXJqZXM3bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11sBLVxNs7v6WA/giphy.gif"
+  style="display:none; margin:20px auto; width:260px; border-radius:20px;"
+/>
 
       <div class="buttons" id="buttons">
         <button id="yesBtn">Yes 💖</button>
         <button id="noBtn">No 🙃</button>
       </div>
+
+    
     </div>
 
     <script>
@@ -108,20 +116,24 @@
         if (!escaped) {
           // LOCK INITIAL POSITION (INSIDE CARD)
           initialRect = noBtn.getBoundingClientRect();
+
           noBtn.style.position = "fixed";
           noBtn.style.left = initialRect.left + "px";
           noBtn.style.top = initialRect.top + "px";
+
           escaped = true;
         }
 
         const padding = 20;
         const yesRect = yesBtn.getBoundingClientRect();
         const noRect = noBtn.getBoundingClientRect();
+
         let x, y, safe;
 
         do {
           x = Math.random() * (window.innerWidth - noRect.width - padding);
           y = Math.random() * (window.innerHeight - noRect.height - padding);
+
           safe =
             x + noRect.width < yesRect.left ||
             x > yesRect.right ||
@@ -138,6 +150,7 @@
         const rect = noBtn.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 2;
+
         const distance = Math.hypot(e.clientX - cx, e.clientY - cy);
         if (distance < 130) escapeNoButton();
       });
@@ -145,23 +158,26 @@
       // Mobile: flee on touch
       document.addEventListener("touchstart", escapeNoButton);
 
-      // YES = HEART ATTACK
-      yesBtn.addEventListener("click", () => {
-        // SHOW GIF
-        document.getElementById("loveGif").style.display = "block";
-        // HIDE BUTTONS
-        document.getElementById("buttons").style.display = "none";
-        // CONFETTI
-        const end = Date.now() + 3500;
-        (function frame() {
-          confetti({
-            particleCount: 12,
-            spread: 90,
-            colors: ["#ff4d88", "#ff99bb", "#ffccd9"],
-          });
-          if (Date.now() < end) requestAnimationFrame(frame);
-        })();
-      });
+// YES = HEART ATTACK
+yesBtn.addEventListener("click", () => {
+  // SHOW GIF
+  document.getElementById("loveGif").style.display = "block";
+
+  // HIDE BUTTONS
+  document.getElementById("buttons").style.display = "none";
+
+  // CONFETTI
+  const end = Date.now() + 3500;
+  (function frame() {
+    confetti({
+      particleCount: 12,
+      spread: 90,
+      colors: ["#ff4d88", "#ff99bb", "#ffccd9"],
+    });
+    if (Date.now() < end) requestAnimationFrame(frame);
+  })();
+});
+
     </script>
   </body>
 </html>
