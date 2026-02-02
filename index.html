@@ -97,6 +97,11 @@
       </div>
 
       <div class="note">*No is not an option 😈*</div>
+      <img
+  id="loveGif"
+  src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXB2bjFvN3lqMm1wZDdka3ppeXBnM3FuNGhwcWZqaDM0dXJqZXM3bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11sBLVxNs7v6WA/giphy.gif"
+  style="display:none; margin-top:25px; width:250px; border-radius:20px;"
+/>
     </div>
 
     <script>
@@ -152,19 +157,23 @@
       // Mobile: flee on touch
       document.addEventListener("touchstart", escapeNoButton);
 
-      // YES = HEART ATTACK
-      yesBtn.addEventListener("click", () => {
-        const end = Date.now() + 3500;
+// YES = HEART ATTACK
+yesBtn.addEventListener("click", () => {
+  // SHOW THE GIF
+  document.getElementById("loveGif").style.display = "block";
 
-        (function frame() {
-          confetti({
-            particleCount: 12,
-            spread: 90,
-            colors: ["#ff4d88", "#ff99bb", "#ffccd9"],
-          });
-          if (Date.now() < end) requestAnimationFrame(frame);
-        })();
-      });
+  // CONFETTI
+  const end = Date.now() + 3500;
+  (function frame() {
+    confetti({
+      particleCount: 12,
+      spread: 90,
+      colors: ["#ff4d88", "#ff99bb", "#ffccd9"],
+    });
+    if (Date.now() < end) requestAnimationFrame(frame);
+  })();
+});
+
     </script>
   </body>
 </html>
