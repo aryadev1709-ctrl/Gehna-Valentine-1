@@ -91,17 +91,19 @@
       <p style="font-size:18px; margin-bottom:30px;">For Gehna 💕</p>
       <h1>Gehna, will you be my Valentine?</h1>
 
+<img
+  id="loveGif"
+  src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXB2bjFvN3lqMm1wZDdka3ppeXBnM3FuNGhwcWZqaDM0dXJqZXM3bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11sBLVxNs7v6WA/giphy.gif"
+  style="display:none; margin:20px auto; width:260px; border-radius:20px;"
+/>
+
       <div class="buttons" id="buttons">
         <button id="yesBtn">Yes 💖</button>
         <button id="noBtn">No 🙃</button>
       </div>
 
       <div class="note">*No is not an option 😈*</div>
-      <img
-  id="loveGif"
-  src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXB2bjFvN3lqMm1wZDdka3ppeXBnM3FuNGhwcWZqaDM0dXJqZXM3bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11sBLVxNs7v6WA/giphy.gif"
-  style="display:none; margin-top:25px; width:250px; border-radius:20px;"
-/>
+    
     </div>
 
     <script>
@@ -159,8 +161,11 @@
 
 // YES = HEART ATTACK
 yesBtn.addEventListener("click", () => {
-  // SHOW THE GIF
+  // SHOW GIF
   document.getElementById("loveGif").style.display = "block";
+
+  // HIDE BUTTONS
+  document.getElementById("buttons").style.display = "none";
 
   // CONFETTI
   const end = Date.now() + 3500;
